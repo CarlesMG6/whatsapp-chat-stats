@@ -8,23 +8,25 @@ def print_messages(df, type, message):
 
     print("\n\n ---------------- " + message + " -------------------- \n")
 
-    mensajes_finales_percentage = df.groupby([type])[type].count()
-    print(mensajes_finales_percentage)
+    messages_percentage = df.groupby([type])[type].count()
+    print(messages_percentage)
+    print("\n")
 
     gap_list = [1,5,10,25]
     for index in range(len(gap_list)):
         if(index<len(gap_list)-1):
-            mensajes_finales_interval = mensajes_finales_1_to_4 = df[
+            messages_interval = df[
                     (df['duracion'] >= gap_list[index] ) 
                     & ( df['duracion']< gap_list[index+1]) 
                 ].groupby([type])['duracion'].count()
-            print("Between " + gap_list[index] + " and " + gap_list[index+1])
+            print("Between " + str(gap_list[index]) + " and " + str(gap_list[index+1]) + " days")
         else:
-            mensajes_finales_interval = df[
+            messages_interval = df[
                 df['duracion'] >= gap_list[index] 
                 ].groupby([type])['duracion'].count()
-            print("Over " + gap_list[index])
-        print(mensajes_finales_interval)
+            print("Over " + str(gap_list[index])  + " days")
+        print(messages_interval)
+        print("\n")
 
 def streaks_without_messages(name, directorio):
     df = generate_df(name)
