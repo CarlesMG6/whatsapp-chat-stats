@@ -19,15 +19,43 @@ def word_counter(name, directorio):
         return word.lower()
     
     def not_valid_word(word):
-
-        not_valid_words = ['', '<multimedia', 'omitido>', 'que', 'no', 'si', 'a', 'de', 'la', 'el', 'y', 'en', 'por', 'lo', 'es', 'me', 
-                           'se', 'pero', 'por', 'un', 'las', 'ya', 'o', 'te', 'para', 'una', 'he', 'mi', 'los', 'al', 'como', 'del',
-                           'ha']
+    
+        not_valid_words = [
+            '', '<multimedia', 'omitido>', 'null','no','si','a',
+            'a', 'ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', ' mediante', 'para', 'por', 'según', 'sin', 'so', 'sobre', 'tras', 'versus', 
+            'amb', 'cap', 'des', 'devers', 'envers', 'fins', 'malgrat', 'per', 'segons', 'sense', 'sobre', 'sota', 'ultra', 'vers',
+            'así', 'asi', 'aunque', 'bien', 'como', 'conque', 'cuando', 'donde', 'e', 'entonces', 'esto', 'luego', 'mas', 'mientras', 'ni', 'o', 'pero', 'pese', 'pues', 'que', 'si', 'sino', 'u', 'y', 'ya',
+            'ans', 'així', 'aixi', 'bé', 'be', 'com', 'doncs', 'e', 'encara', 'fins', 'i', 'ja', 'mentre', 'ni', 'o', 'però', 'pero', 'que', 'si', 'sinó', 'sino', 'u'
+            'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas',
+            'yo', 'tú', 'tu', 'él', 'el', 'ella', 'nosotros', 'vosotros', 'ellos', 'ellas', 'me', 'te', 'se', 'nos', 'os', 'lo', 'le', 'les', 'la', 'los', 'las',
+            'que', 'quien', 'quién', 'cual', 'cuál', 'cuales', 'cuáles', 'este', 'ese', 'aquel', 'estos', 'esos', 'aquellos', 'esta', 'esa', 'aquella', 'estas', 'esas', 'aquellas',
+            'el', 'la','al', 'els', 'les', 'un', 'una', 'uns', 'unes', 'del',
+            'jo', 'tu', 'tú', 'ell', 'el', 'ella', 'nosaltres', 'vosaltres', 'ells', 'elles', 'em', 'et', 'es', 'ens', 'us', 'ho', 'li', 'els', 'la', 'les',
+            'que', 'qui', 'què', 'que', 'cual', 'quin', 'quins', 'quina', 'quines', 'aquest', 'aquesta', 'aquests', 'aquestes', 'aquell', 'aquella', 'aquells', 'aquelles', 'això', 'aixo', 'allò', 'allo']
+        
+        extra_not_valid_words = [
+            'muy', 'poco', 'bien', 'mal', 'aquí', 'alli', 'allí', 'ahora', 'hoy', 'ayer', 'siempre', 'nunca', 'ya', 'entonces', 'casi', 'pronto', 'lejos', 'cerca',
+            'ah', 'eh', 'oh', 'pues', 'bueno', 'vaya',
+            'molt', 'poc', 'bé', 'be', 'malament', 'aquí', 'aqui', 'allí', 'alli', 'ara', 'avui', 'ahir', 'sempre', 'mai', 'ja', 'aleshores', 'gairebé', 'aviat', 'lluny', 'aprop',
+            'ah', 'eh', 'oh', 'doncs', 'bé', 'be', 'vaja',
+            'soy', 'eres', 'es', 'somos', 'sois', 'son', 'fui', 'fuiste', 'fue', 'fuimos', 'fuisteis', 'fueron', 'era', 'eras', 'éramos', 'éramos', 'eran', 'seré', 'serás', 'será', 'seremos', 'seréis', 'serán', 'eramos', 'seras', 'sera', 'seremos', 'sereis', 'seran',
+            'estoy', 'estás', 'esta', 'está', 'estamos', 'estáis', 'estan', 'están', 'estuve', 'estuviste', 'estuvo', 'estuvimos', 'estuvisteis', 'estuvieron', 'estaba', 'estabas', 'estábamos', 'estabais', 'estaban', 'estaré', 'estarás', 'estará', 'estaremos', 'estaréis', 'estarán','estas', 'esta', 'estais', 'estan', 'estuve', 'estuvimos', 'estuvieseis', 'estaban', 'estabas', 'estabamos', 'estare', 'estaras', 'estara', 'estaremos', 'estareis', 'estaran',
+            'he', 'has', 'ha', 'hemos', 'habéis', 'han', 'había', 'habías', 'habíamos', 'habíais', 'habían', 'hube', 'hubiste', 'hubo', 'hubimos', 'hubisteis', 'hubieron', 'habré', 'habrás', 'habrá', 'habremos', 'habréis', 'habrán','habia', 'habias', 'habiamos', 'habiais', 'habian', 'habre', 'habras', 'habra', 'habremos', 'habreis', 'habran',
+            'sóc', 'ets', 'és', 'som', 'sou', 'són', 'vaig', 'vas', 'va', 'vam', 'vau', 'van', 'era', 'eres', 'érem', 'éreu', 'eren', 'seré', 'seràs', 'serà', 'serem', 'sereu', 'seran',
+            'estic', 'estàs', 'està', 'estem', 'esteu', 'estan', 'estava', 'estaves', 'estava', 'estàvem', 'estàveu', 'estaven', 'estaré', 'estaràs', 'estarà', 'estarem', 'estareu', 'estaran',
+            'he', 'has', 'ha', 'hem', 'heu', 'han', 'havia', 'havies', 'havia', 'havíem', 'havíeu', 'havien', 'hauré', 'hauràs', 'haurà', 'haurem', 'haureu', 'hauran',
+            'soc', 'ets', 'es', 'som', 'sou', 'son', 'erem', 'ereu', 'eren', 'seras', 'sera', 'serem', 'sereu', 'seran',
+            'estas', 'esta', 'estem', 'esteu', 'estan', 'estava', 'estaves', 'estavem', 'estaveu', 'estaven', 'estare', 'estaras', 'estara', 'estarem', 'estareu', 'estaran',
+            'havia', 'havies', 'haviem', 'havieu', 'havien', 'haure', 'hauras', 'haura', 'haurem', 'haureu', 'hauran'
+            ]
 
         if word in not_valid_words:
             return True
         else:
-            return False
+            if word in extra_not_valid_words:
+                return True
+            else:
+                return False
 
     def insert_in_words_by_person(word, person, words):
         if word in words:
