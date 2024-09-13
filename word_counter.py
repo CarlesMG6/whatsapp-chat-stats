@@ -21,7 +21,7 @@ def word_counter(name, directorio):
     def not_valid_word(word):
     
         not_valid_words = [
-            '', '<multimedia', 'omitido>', 'null','no','si','a',
+            '', '<multimedia', 'omitido>', 'null','no','si','mi','porque','perque',
             'a', 'ante', 'bajo', 'cabe', 'con', 'contra', 'de', 'desde', 'durante', 'en', 'entre', 'hacia', 'hasta', ' mediante', 'para', 'por', 'según', 'sin', 'so', 'sobre', 'tras', 'versus', 
             'amb', 'cap', 'des', 'devers', 'envers', 'fins', 'malgrat', 'per', 'segons', 'sense', 'sobre', 'sota', 'ultra', 'vers',
             'así', 'asi', 'aunque', 'bien', 'como', 'conque', 'cuando', 'donde', 'e', 'entonces', 'esto', 'luego', 'mas', 'mientras', 'ni', 'o', 'pero', 'pese', 'pues', 'que', 'si', 'sino', 'u', 'y', 'ya',
